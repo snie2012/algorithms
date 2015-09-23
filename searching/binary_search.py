@@ -7,3 +7,5 @@ def binarySearch(l, value):
         if l[mid] < value: low = mid+1
         else: return mid
     return -1
+
+print binarySearch([3,4,1,2,98], 1)
