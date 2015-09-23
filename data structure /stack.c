@@ -1,10 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define STACK_MAX 100
+#define STACK_N 15
+#define STACK_MAX 1000
 
 typedef struct Stack {
-	int data[STACK_MAX];
+	int data[STACK_N];
 	int size;
 } Stack;
 
@@ -32,7 +33,28 @@ void stack_pop(Stack *S) {
 }
 
 int main() {
-	int data[STACK_MAX] = [];
-	int size = 100;
-	Stack S = {data, size}
+	int data[STACK_N];
+	int i;
+	int size = STACK_N;
+
+	for (i = 0; i < STACK_N; i++) data[i] = rand() % STACK_MAX;
+
+	Stack stack = {data[STACK_N], size};
+	//Stack *s = &stack;
+	stack_init(&stack);	
+	stack_push(&stack, 9);
+	stack_push(&stack, 8);
+	stack_push(&stack, 10);
+	printf("%d\n", stack_top(&stack));
+	stack_pop(&stack);
+	printf("%d\n", stack_top(&stack));
+	stack_pop(&stack);
+	printf("%d\n", stack_top(&stack));
+	stack_pop(&stack);
+	printf("%d\n", stack_top(&stack));
+
+	return EXIT_SUCCESS;
 }
+
+
+
