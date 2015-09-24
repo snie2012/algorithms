@@ -6,6 +6,7 @@
    Only effective if N is much smaller than RAND_MAX;
    if this may not be the case, use a better random
    number generator. */
+#define RAND_MAX 1000
 void shuffle(int *array, size_t n){
     if (n > 1) {
         size_t i;
@@ -20,6 +21,7 @@ void shuffle(int *array, size_t n){
 
 int partition(int *arr, int n, int pivot) {
     int i, j, temp;
+    // Pay attention to this loop. It's the key step that makes in-place sorting work.
     for (i = 0, j = n - 1;; i++, j--) {
         while (arr[i] < pivot) i++;
         while (arr[j] > pivot) j--;
