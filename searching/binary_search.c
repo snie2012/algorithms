@@ -20,21 +20,6 @@ int binary_search_recursive(int *arr, int n, int s) {
     }
 }
 
-
-int binary_search_wrong(int *arr, int n, int s) {
-    if (n == 0) return -1;
-    int i = n/2;
-
-    if (s == arr[i]) {
-        return i;
-    } else if (s > arr[i]) {
-        return binary_search_wrong(arr+i+1, n-i-1, s);
-    } else {
-        return binary_search_wrong(arr, i, s);
-    }
-}
-
-
 int binary_search_iterative(int *arr, int n, int s) {
     int low = 0;
     int high = n - 1;
@@ -52,6 +37,21 @@ int binary_search_iterative(int *arr, int n, int s) {
 
     return -1;
 }
+
+
+int binary_search_recursive_wrong(int *arr, int n, int s) {
+    if (n == 0) return -1;
+    int i = n/2;
+
+    if (s == arr[i]) {
+        return i;
+    } else if (s > arr[i]) {
+        return binary_search_wrong(arr+i+1, n-i-1, s);
+    } else {
+        return binary_search_wrong(arr, i, s);
+    }
+}
+
 
 
 int main() {
